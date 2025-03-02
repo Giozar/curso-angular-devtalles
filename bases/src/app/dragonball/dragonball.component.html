@@ -13,16 +13,25 @@
     <div class="col-12 col-sm-6">
         <ul>
             @for( character of characters(); track character.id; let i = $index ){
+            @if( character.power < 6000 ) {
+
             <li>
                 <span>{{i}} - {{ character.name }}</span> -
                 <!-- <strong
-                [ngClass]="
-                powerClasses()" 
-                > -->
+                        [ngClass]="
+                        powerClasses()" 
+                        > -->
 
                 <strong [class.text-danger]="character.power >= 9000" [class.text-primary]="character.power < 9000">
                     {{ character.power }} </strong>
             </li>
+            } @else {
+            <li>
+                <span>{{i}} - {{ character.name }} - este es fuertes</span> -
+                <strong [class.text-danger]="character.power >= 9000" [class.text-primary]="character.power < 9000">
+                    {{ character.power }} </strong>
+            </li>
+            }
             }
         </ul>
     </div>
