@@ -11,3 +11,9 @@ nav a {
     color: white;
     text-decoration: none;
 }
+
+nav a.active {
+    font-weight: bold;
+    color: aquamarine;
+    text-decoration: underline;
+}
