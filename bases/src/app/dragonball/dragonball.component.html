@@ -13,10 +13,16 @@
     <div class="col-12 col-sm-6">
         <ul>
             @for( character of characters(); track character.id; let i = $index ){
-                <li>
-                    <span>{{i}} - {{ character.name }}</span>
-                    <strong class="text-danger">{{ character.power }}</strong>
-                </li>
+            <li>
+                <span>{{i}} - {{ character.name }}</span> -
+                <!-- <strong
+                [ngClass]="
+                powerClasses()" 
+                > -->
+
+                <strong [class.text-danger]="character.power >= 9000" [class.text-primary]="character.power < 9000">
+                    {{ character.power }} </strong>
+            </li>
             }
         </ul>
     </div>
