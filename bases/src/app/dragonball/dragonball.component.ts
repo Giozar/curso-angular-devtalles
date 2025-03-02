@@ -14,6 +14,9 @@ interface Character {
 })
 export class DragonballComponent {
 
+  name = signal('Goku');
+  power = signal(10000);
+
   characters = signal<Character[]>([
     { id: 1, name: 'Goku', power: 10000 },
     { id: 2, name: 'Vegeta', power: 9000 },
@@ -26,6 +29,31 @@ export class DragonballComponent {
     { id: 9, name: 'Chichi', power: 2000 },
     { id: 10, name: 'Yamcha', power: 1000 }
   ]);
+
+  addCharacter() {
+    console.log(this.name(), this.power());
+
+    if(!this.name() || !this.power() || this.power() <= 0) {
+      return;
+    }
+
+    const newCharacter = {
+      id: this.characters().length + 1,
+      name: this.name(),
+      power: this.power()
+    };
+
+    this.characters.update(characters => [...characters, newCharacter]);
+
+    this.resetFields();
+
+  }
+
+  resetFields(){
+    this.name.set('');
+    this.power.set(0);
+
+  }
 
   // powerClasses = computed(() => {
   //   return {
