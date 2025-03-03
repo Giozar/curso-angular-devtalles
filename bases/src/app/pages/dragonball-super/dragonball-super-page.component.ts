@@ -27,4 +27,8 @@ export class DragonballSuperPageComponent {
     { id: 9, name: 'Chichi', power: 2000 },
     { id: 10, name: 'Yamcha', power: 1000 }
   ]);
+
+  addCharacter(newCharacter: Character) {
+    this.characters.update((characters) => [...characters, newCharacter]);
+  }
 }
